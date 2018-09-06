@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet, View, Text, ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import {
-  Icon, Container, Content, Thumbnail,
+  Icon,
+  Container,
+  Content,
+  Thumbnail,
+  Header,
+  Left,
+  Right,
+  Body,
 } from 'native-base';
 import CardComponent from '../CardComponent';
 
@@ -12,20 +24,36 @@ class HomeTab extends Component {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="ios-home" style={{ color: tintColor }} />
     ),
-  }
+  };
 
   render() {
     return (
       <Container style={styles.container}>
+        <Header style={[styles.androidHeader]}>
+          <Left>
+            <Icon name="ios-camera-outline" style={{ paddingLeft: 10 }} />
+          </Left>
+          <Body style={[styles.androidHeaderTitle]}>
+            <Text>Instagram</Text>
+          </Body>
+          <Right>
+            <Icon
+              name="ios-send-outline"
+              style={{ paddingRight: 10, fontSize: 32 }}
+            />
+          </Right>
+        </Header>
+
         <Content>
           <View style={{ height: 100 }}>
-            <View style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              paddingHorizontal: 7,
-            }}
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingHorizontal: 7,
+              }}
             >
               <Text style={{ fontWeight: 'bold' }}>Stories</Text>
               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -44,31 +72,59 @@ class HomeTab extends Component {
                 }}
               >
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/1.jpg')}
                 />
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/2.jpg')}
                 />
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/3.jpg')}
                 />
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/4.jpg')}
                 />
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/5.jpg')}
                 />
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/6.jpg')}
                 />
                 <Thumbnail
-                  style={{ marginHorizontal: 5, borderColor: 'pink', borderWidth: 2 }}
+                  style={{
+                    marginHorizontal: 5,
+                    borderColor: 'pink',
+                    borderWidth: 2,
+                  }}
                   source={require('../../assets/StoriesHeaderThumbnails/7.jpg')}
                 />
               </ScrollView>
@@ -85,8 +141,19 @@ class HomeTab extends Component {
 export default HomeTab;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
+  androidHeader: {
+    ...Platform.select({
+      android: {
+        marginTop: StatusBar.currentHeight,
+        backgroundColor: 'white',
+      },
+    }),
+  },
+  androidHeaderTitle: {
+    ...Platform.select({
+      android: {
+        alignItems: 'flex-end',
+      },
+    }),
   },
 });

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Platform,
 } from 'react-native';
-import { Icon } from 'native-base';
+// import { Icon } from 'native-base';
 import { createBottomTabNavigator } from 'react-navigation';
 
 import HomeTab from './AppTabNavigator/HomeTab';
@@ -13,9 +13,7 @@ import ProfileTab from './AppTabNavigator/ProfileTab';
 
 class MainScreen extends Component {
   static navigationOptions = {
-    headerLeft: <Icon name="ios-camera-outline" style={{ paddingLeft: 10 }} />,
-    title: 'Instagram',
-    headerRight: <Icon name="ios-send-outline" style={{ paddingRight: 10 }} />,
+    header: null,
   };
 
   render() {
