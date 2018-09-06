@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, Image,
+  Text, Image,
 } from 'react-native';
 import {
   Card,
@@ -8,11 +8,15 @@ import {
   Thumbnail,
   Body,
   Left,
-  Right,
   Button,
   Icon,
 } from 'native-base';
 
+const images = {
+  1: require('../assets/feed_images/1.jpg'),
+  2: require('../assets/feed_images/2.jpg'),
+  3: require('../assets/feed_images/3.png'),
+};
 class CardComponent extends Component {
   render() {
     return (
@@ -28,7 +32,7 @@ class CardComponent extends Component {
         </CardItem>
         <CardItem cardBody>
           <Image
-            source={require('../assets/feed_images/1.jpg')}
+            source={images[this.props.imageSource]}
             style={{
               height: 200,
               width: null,
@@ -64,16 +68,20 @@ class CardComponent extends Component {
             </Button>
           </Left>
         </CardItem>
+        <CardItem style={{ height: 20 }}>
+          <Text>{ this.props.likes }</Text>
+        </CardItem>
+        <CardItem>
+          <Body>
+            <Text>
+              <Text style={{ fontWeight: '900' }}>Huy Manh </Text>
+                If you use this site regularly and would like to help keep the site on the Internet,
+                please consider donating a small sum to help pay for the hosting and bandwidth bill.
+            </Text>
+          </Body>
+        </CardItem>
       </Card>
     );
   }
 }
 export default CardComponent;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
