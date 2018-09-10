@@ -19,11 +19,12 @@ const images = {
 };
 class CardComponent extends Component {
   render() {
+    const { imageSource, likes } = this.props;
     return (
       <Card>
         <CardItem>
           <Left>
-            <Thumbnail source={require('../assets/me.png')} />
+            <Thumbnail source={require('../assets/me.jpg')} />
             <Body>
               <Text>Huy Manh</Text>
               <Text note>Jan 10, 2018</Text>
@@ -32,7 +33,7 @@ class CardComponent extends Component {
         </CardItem>
         <CardItem cardBody>
           <Image
-            source={images[this.props.imageSource]}
+            source={images[imageSource]}
             style={{
               height: 200,
               width: null,
@@ -69,7 +70,7 @@ class CardComponent extends Component {
           </Left>
         </CardItem>
         <CardItem style={{ height: 20 }}>
-          <Text>{ this.props.likes }</Text>
+          <Text>{ likes }</Text>
         </CardItem>
         <CardItem>
           <Body>
